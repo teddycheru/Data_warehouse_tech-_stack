@@ -1,11 +1,41 @@
-version: '3'
+version: '3.8'
 services:
-  airflow:
-    image: apache/airflow:latest
-    ports:
-      - 8080:8080
+ postgres:
+    image: postgres:latest
     environment:
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////airflow/airflow.db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345rdx
+      POSTGRES_DB: data_warehouse
+    ports:
+      - "5439:5439"
+    volumes:
+         - ./data:/data # Mount the data directory
+
+ dbt:
+    image: fishtownanalytics/dbt:0.21.0
+    command: dbt run
+    # Add other necessary configurations for dbt_1
+    volumes:
+      - ./dbt:/usr/app/dbt
+    depends_on:
+      - postgres
+
+ airflow:
+    image: apache/airflow:2.2.3
+    command: webserver
+    # Add other necessary configurations for airflow_1
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:12345rdx@postgres/data_warehouse
+    ports:
+      - "8081:8080"
     volumes:
       - ./dags:/opt/airflow/dags
-      - ./logs:/opt/airflow/logs
+    depends_on:
+      - postgres
+
+ redash:
+    image: redash/redash:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres

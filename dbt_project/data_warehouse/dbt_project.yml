@@ -1,0 +1,38 @@
+name: 'data_warehouse'
+version: '1.0.0'
+profile: 'data_warehouse'
+
+# Specify targets for different environments
+targets:
+ dev:
+    type: postgres
+    host: localhost
+    user: "{{ env_var('POSTGRES_USER') }}"
+    pass: "{{ env_var('POSTGRES_PASSWORD') }}"
+    port: 5432
+    dbname: "{{ env_var('POSTGRES_DB') }}"
+    schema: dev_schema
+    threads: 1
+    timeout_seconds: 300
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+ - "target"
+ - "dbt_packages"
+
+# Configuring models
+models:
+ data_warehouse:
+    # Example configuration for models in the example/ directory
+    example:
+      +materialized: view
+    # Additional model configurations can be added here
+    another_model:
+      +materialized: table
+      +schema: another_schema
