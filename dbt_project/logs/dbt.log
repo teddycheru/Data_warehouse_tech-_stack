@@ -29,3 +29,4 @@ Runtime Error
 [0m19:45:21.985249 [debug] [MainThread]: Command `dbt init` failed at 19:45:21.984464 after 43.97 seconds
 [0m19:45:21.987313 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76f11442c0a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76f1131104c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x76f1130fb7f0>]}
 [0m19:45:21.990964 [debug] [MainThread]: Flushing usage events
+
