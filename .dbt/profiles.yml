@@ -1,0 +1,13 @@
+default:
+ target: dev
+ outputs:
+    dev:
+      type: postgres
+      host: "localhost"
+      user: "postgres"
+      pass: "12345rdx"
+      port: 5432
+      dbname: "postgres"
+      schema: "public"
+      threads: 1
+      keepalives_idle: 0 # default 0, indicating the system default

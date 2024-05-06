@@ -1,0 +1,28 @@
+# sources.yml
+
+sources:
+ - name: vehicle_data
+   tables:
+     - name: vehicle_data
+       identifier: vehicle_data
+       columns:
+         - name: track_id
+           description: The unique identifier for the vehicle track.
+         - name: type
+           description: The type of vehicle.
+         - name: traveled_d
+           description: The distance traveled.
+         - name: avg_speed
+           description: The average speed of the vehicle.
+         - name: lat
+           description: The latitude of the vehicle's location.
+         - name: lon
+           description: The longitude of the vehicle's location.
+         - name: speed
+           description: The current speed of the vehicle.
+         - name: lon_acc
+           description: The longitude accuracy of the vehicle's location.
+         - name: lat_acc
+           description: The latitude accuracy of the vehicle's location.
+         - name: time
+           description: The timestamp of the vehicle's location.
