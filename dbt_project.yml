@@ -1,0 +1,11 @@
+name: 'data_warehouse'
+version: '1.0.0'
+profile: 'default'
+model-paths: ["models"] # Updated from source-paths
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["data"] # Updated from data-paths
+macro-paths: ["macros"]
+target-path: "target" # This should match the directory you created
+clean-targets: ["target"]
+config-version: 2
